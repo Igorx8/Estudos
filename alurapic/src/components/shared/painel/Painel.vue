@@ -1,13 +1,15 @@
 <template>
         <div class="painel">
-        <h2 class="painel-titulo"></h2>
-          <div class="painel-conteudo">         
-          </div>
+        <h2 class="painel-titulo"> {{ titulo }}</h2>
+          <slot class="painel-conteudo">         
+          </slot>
         </div>
 </template>
 
 <script>
 export default {
+
+  props: ['titulo']
 }
 </script>
 
