@@ -5,19 +5,16 @@
     <ul class="lista-fotos">
       <li class="lista-fotos-item" v-for="x in fotos">
 
-        <div class="painel">
-        <h2 class="painel-titulo">{{ x.titulo}}</h2>
-          <div class="painel-conteudo">         
+        <meu-painel :titulo="x.titulo">
             <img :src="x.url" :alt="x.titulo" class="imagem-responsiva"/>
-          </div>
-        </div>
-
+        </meu-painel>
       </li>
     </ul>
   </div>
 
 
   <!--
+    PAREI NA AULA 4 DO MODULO 4
     <img v-bind:src="foto.url" v-bind:alt="foto.alt">
     <h2 v-text="tit"></h2>
     SÃO DUAS ALTERNATIVAS PARA FAZER REFERENCIA ATRAVES DE ATRIBUTOS
@@ -61,25 +58,7 @@ export default {
       display: inline-block;
     }
 
-    
-   .painel {
-    padding: 0 auto;
-    border: solid 2px grey;
-    display: inline-block;
-    margin: 5px;
-    box-shadow: 5px 5px 10px grey;
-    width: 200px;
-    height: 100%;
-    vertical-align: top;
-    text-align: center;
-  }
-
-  .painel .painel-titulo {
-    text-align: center;
-    border: solid 2px;
-    background: lightblue;
-    margin: 0 0 15px 0;
-    padding: 10px;
-    text-transform: uppercase;
+  .imagem-responsiva{
+    width: 100;
   }
 </style>
