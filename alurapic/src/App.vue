@@ -1,18 +1,12 @@
 <template>
   <div class="corpo">
-    <h1 class="centralizado">{{ tit }}</h1>
 
-    <ul class="lista-fotos">
-      <li class="lista-fotos-item" v-for="x in fotos">
+    <meu-menu :rotas="routes" />
 
-        <meu-painel :titulo="x.titulo">
-            <img :src="x.url" :alt="x.titulo" class="imagem-responsiva"/>
-        </meu-painel>
-      </li>
-    </ul>
+    <transition name="pagina">
+      <router-view></router-view>
+    </transition>
   </div>
-
-
   <!--
     PAREI NA AULA 4 DO MODULO 4
     <img v-bind:src="foto.url" v-bind:alt="foto.alt">
@@ -22,51 +16,38 @@
 </template>
 
 <script>
-import Painel from './components/shared/painel/Painel.vue';
 
+import { routes } from './routes'
+import Menu from './components/shared/menu/Menu.vue'
 export default {
 
-  components: {
-      'meu-painel': Painel
-  },
-
-  data() {
+    components: {
+      'meu-menu' : Menu
+    },
     
-    return {
-      tit: "Olá, mundo!",
-      fotos: [],
-    };
-  },
+    data(){
 
-  created(){
-    let promise = this.$http.get('http://localhost:3000/v1/fotos');
-    promise
-    .then(res => res.json()
-    .then(fotos => this.fotos = fotos, err => alert(err)));
-  }
-};
+      return {
+
+        routes
+      }
+    }
+}
 </script>
 
-<style>
-    .corpo {
-  font-family: Arial, Arial, Helvetica, sans-serif;
-  width: 96%;
-  margin: 0 auto;
+<style scope>
+  .corpo {
+    font-family: Helvetica, sans-serif;
+    width: 96%;
+    margin: 0 auto;
   }
 
-    .centralizado {
-      text-align: center;
+  .pagina-enter, .pagina-leave-active {
+  opacity: 0;
   }
 
-    .lista-fotos {
-      list-style: none;
-    }
-
-    .lista-fotos .lista-fotos-item{
-      display: inline-block;
-    }
-
-  .imagem-responsiva{
-    width: 100;
+  .pagina-enter-active, .pagina-leave-active {
+  transition: opacity .4s;
   }
+
 </style>
