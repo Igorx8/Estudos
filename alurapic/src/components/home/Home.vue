@@ -19,7 +19,7 @@
 
   </div>
   <!--
-    PAREI NA AULA 4 DO MODULO 4
+    PAREI NA AULA 4 DO MODULO 7
     <img v-bind:src="foto.url" v-bind:alt="foto.alt">
     <h2 v-text="tit"></h2>
     SÃO DUAS ALTERNATIVAS PARA FAZER REFERENCIA ATRAVES DE ATRIBUTOS
