@@ -7,7 +7,7 @@ import { routes } from './routes'
 Vue.use(VueRouter);
 const router = new VueRouter({
   routes,
-  mode: 'history'
+  mode: 'history' //remove o # da url
 })
 
 Vue.use(VueResource);
