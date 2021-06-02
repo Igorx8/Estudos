@@ -2,7 +2,7 @@
   <div>
     <h1 class="centralizado">{{ titulo }}</h1>
 
-    <input type="search" class="filtro" v-on:input="filtro = $event.target.value" placeholder="Filtre por parte do título" />
+    <input type="search" class="filtro" @input="filtro = $event.target.value" placeholder="Filtre por parte do título" />
     
     <ul class="lista-fotos">
       <li class="lista-fotos-item" v-for="x of fotosComFiltro" :key="x">
@@ -10,7 +10,7 @@
 
         <meu-painel :titulo="x.titulo">
           <imagem-responsiva :url="x.url" :titulo="x.titulo"></imagem-responsiva>
-          <meu-botao tipo="button" rotulo="REMOVER" v-on:click.native="remove(x)"/>
+          <meu-botao tipo="button" rotulo="REMOVER" @botaoAtivado="remove(x, $event)" :confirmacao="true" estilo="padrao"/>
         </meu-painel> <!-- click.native permite que o componente use a funcao nao configurada em seu props-->
 
 
@@ -63,10 +63,8 @@ export default {
 
   methods: {
 
-    remove(x) {
-      if(confirm('Deseja remover a foto ?')){
-      alert(`A foto ${x.titulo} foi removida`)
-      }
+    remove(x, $event) {
+      alert(`A foto ${x.titulo} foi removida às ${$event.getHours()}:${$event.getMinutes()}`)
     }
   },
 
