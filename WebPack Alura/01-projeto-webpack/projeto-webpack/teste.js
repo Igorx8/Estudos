@@ -12,14 +12,14 @@ function cadastra(){
         }
     )
 
-    localStorage.setItem('Usuario', JSON.stringify(dados))
+    localStorage.setItem('Usuario', JSON.stringify(dados)) //converte o objeto valores string
     alert('Cadastrou')
 }
 
 
 function testar(){
-    let tabela = JSON.parse(localStorage.Usuario)
-    let logado = 0
+    let tabela = JSON.parse(localStorage.Usuario) //converte as strings em um novo objeto, usei let tabela como exemplo
+    let logado = 0                                 //mas poderia ter feito a iteracao direto no array dados
     for(i = 0; i < tabela.length; i++){
         if(tabela[i].name == nome.value && tabela[i].pwd == senha.value){
             logado += 1
@@ -35,13 +35,14 @@ function testar(){
 }
 
 function deleta(){
-    if(localStorage.getItem('nome') == nome.value){
-        localStorage.removeItem('nome',nome.value)
-        localStorage.removeItem('senha',senha.value)
+    for(i = 0; i < dados.length; i++){
+        if(dados[i].name == nome.value && dados[i].pwd == senha.value){
+            confirm(`Deseja excluir o usuário ${dados[i].name} ?`)
+            console.log(dados[i])
+            dados.splice(i, 1)
+        }
     }
-    else{
-        alert('Usuário não encontrado')
-    }
+    localStorage.Usuario = (JSON.stringify(dados))
 }
 
 /*
