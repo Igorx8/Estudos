@@ -15,3 +15,18 @@ else{
     alert('Login ou senha incorretos')
 }
 }
+
+function deleta(){
+    if(localStorage.getItem('nome',nome.value)){
+        localStorage.removeItem('nome',nome.value)
+        localStorage.removeItem('senha',senha.value)
+    }
+    else{
+        alert('Usuário não encontrado')
+    }
+}
+
+/*
+    localStorage.removeItem('nome') -> remove o campo selecionado
+    localStorage.clear() -> remove todos os campos
+*/
