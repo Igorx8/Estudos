@@ -4,11 +4,11 @@
     <input type="search" class="filtro" @input="filtro = $event.target.value" placeholder="filtre por parte do título">
 
     <ul class="lista-fotos">
-      <li class="lista-fotos-item" v-for="foto of fotosComFiltro" :key="foto">
+      <li class="lista-fotos-item" v-for="foto of fotosComFiltro" :key="'lista-fotos' + foto">
 
         <meu-painel :titulo="foto.titulo">
           
-          <imagem-responsiva :url="foto.url" :titulo="foto.titulo" v-meu-transform:scale="1.1"/>
+          <imagem-responsiva v-meu-transform:scale="1.1" :url="foto.url" :titulo="foto.titulo"/>
           <meu-botao 
             tipo="button" 
             rotulo="REMOVER" 
