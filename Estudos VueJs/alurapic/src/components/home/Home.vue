@@ -67,9 +67,13 @@ export default {
 
     remove(foto) { 
         //aula 3.2
-        this.$http
-        .delete(`http://localhost:3000/v1/fotos/${foto._id}`)
-        .then(() => this.mensagem = 'Foto removida com sucesso', (err) => {
+        this.resource.delete({ id: foto._id})
+        .then(() => {
+          let indice = this.fotos.indexOf(foto)
+          this.fotos.splice(indice,1)
+          this.mensagem = 'Foto removida com sucesso'
+        }, 
+        (err) => {
           console.log(err) 
           this.mensagem = 'Não foi possível remover a foto'}
           )
@@ -79,7 +83,8 @@ export default {
 
   created() {
 
-    this.$http.get('http://localhost:3000/v1/fotos')
+    this.resource = this.$resource('v1/fotos{/id}')
+    this.resource.query()
       .then(res => res.json())
       .then(fotos => this.fotos = fotos, err => console.log(err));
   }
