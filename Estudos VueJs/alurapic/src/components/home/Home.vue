@@ -67,9 +67,8 @@ export default {
   methods: {
 
     remove(foto) { 
-        //aula 3.8
-        this.resource.delete({ id: foto._id})
-        .then(() => {
+        //módulo 4
+       this.service.apaga(foto._id).then(() => {
           let indice = this.fotos.indexOf(foto)
           this.fotos.splice(indice,1)
           this.mensagem = 'Foto removida com sucesso'
@@ -86,10 +85,7 @@ export default {
 
     this.service = new FotoService(this.$resource)
 
-    this.resource = this.$resource('v1/fotos{/id}')
-    this.resource.query()
-      .then(res => res.json())
-      .then(fotos => this.fotos = fotos, err => console.log(err));
+      this.service.lista().then(fotos => this.fotos = fotos, err => console.log(err));
   }
 }
 
