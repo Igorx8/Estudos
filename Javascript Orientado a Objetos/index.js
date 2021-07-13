@@ -24,7 +24,7 @@ conta2.agencia = 102
 
 const conta3 = new ContaCorrente();
 conta3.agencia = 102;
-conta3.cliente = cliente1
+conta3.cliente = cliente1;
 
 contaCorrenteIgor.transferir(200, conta2)
 conta3._saldo = 1500;
