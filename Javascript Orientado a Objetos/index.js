@@ -17,10 +17,12 @@ contaCorrenteIgor.cliente = cliente1
 
 const conta2 = new ContaCorrente();
 conta2.agencia = 102
-conta2.cliente = cliente2
+conta2.cliente = new Cliente();  //caso definido como null, ou se apagado, as propriedades não poderão ser setadas, null/undefined
+conta2.cliente.nome = 'Alice'
+conta2.cliente.cpf = '111.222.333-55'
 
 contaCorrenteIgor.transferir(200, conta2)
 
 conta2.depositar(50)
 console.log(contaCorrenteIgor)
-console.log(conta2);
+console.log(conta2.cliente.nome);
