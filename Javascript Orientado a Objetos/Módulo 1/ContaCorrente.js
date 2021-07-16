@@ -1,7 +1,16 @@
 import { Cliente } from './Cliente.js'
 export class ContaCorrente{
+    //posso definir um atributo para a classe
+    static numeroDeContas = 0;
     agencia;
     _cliente;
+
+
+    constructor(agencia, cliente){
+        this.agencia = agencia;
+        this.cliente = cliente
+        ContaCorrente.numeroDeContas++
+    }
 
     set cliente(novoValor) {
         if (novoValor instanceof Cliente) {
