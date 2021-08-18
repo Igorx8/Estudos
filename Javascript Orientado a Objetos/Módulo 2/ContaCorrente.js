@@ -1,46 +1,16 @@
-import { Cliente } from './Cliente.js'
-export class ContaCorrente{
+import { Conta } from './Conta.js'
+export class ContaCorrente extends Conta{
     //posso definir um atributo para a classe
     static numeroDeContas = 0;
-    agencia;
-    _cliente;
-
-
-    constructor(agencia, cliente){
-        this.agencia = agencia;
-        this._cliente = cliente
-        this._saldo = 0;
+    constructor(cliente, agencia){
+        super(0, cliente, agencia);
         ContaCorrente.numeroDeContas++
     }
 
-    set cliente(novoValor) {
-        if (novoValor instanceof Cliente) {
-            this._cliente = novoValor;
-        }
-
-    }
-
-    get cliente(){
-        return this._cliente
-    }
-
-    get saldo(){
-        return this._saldo
-    }
-
     sacar(valor){
-        if(this._saldo >= valor) this._saldo -= valor
-        return valor
-    }
-
-    depositar(valor){
-        if(valor <= 0) console.log('Não foi possível realizar o depósito')
-        else return this._saldo += valor
-    }
-
-    transferir(valor, conta){
-        conta.cidade = 'São Paulo'
-        const valorSacado = this.sacar(valor);
-        conta.depositar(valorSacado);
+        //podemos sobreescrever um método ao usar o nome do método usado na classe pai
+        //podemos usar super.nomeDoMetodo() para chamar o método do pai
+        let taxa = 1.1
+        return super._sacar(valor, taxa)
     }
 }
