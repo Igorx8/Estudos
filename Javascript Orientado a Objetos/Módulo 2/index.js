@@ -1,18 +1,17 @@
-//classe é um molde padrão para a criação de um objeto
 import { Cliente } from './Cliente.js';
-import { ContaPoupanca } from './ContaPoupanca.js'
-import { ContaCorrente } from './ContaCorrente.js'
-import { ContaSalario } from './ContaSalario.js'
+import { Gerente } from './Funcionarios/Gerente.js';
+import { Diretor } from './Funcionarios/Diretor.js';
+import { SistemaAutenticacao } from './SistemaAutenticacao.js'
 
-const cliente1 = new Cliente('Igor','123.222.111-52');
+const diretor = new Diretor('Rodrigo', 10000, 12345678900);
+diretor.cadastrarSenha('123456789');
+const gerente = new Gerente('Rafael', 5000, 98765432100);
+gerente.cadastrarSenha('123');
+const cliente = new Cliente('Igor', 12345, '1223');
 
-let contaCorrenteIgor = new ContaCorrente( cliente1, '1001');
-contaCorrenteIgor.depositar(500)
-contaCorrenteIgor.sacar(100)
+const gerenteEstaLogado = SistemaAutenticacao.login(gerente, '123');
+const diretorEstaLogado = SistemaAutenticacao.login(diretor, '123456789');
+const clienteEstaLogado = SistemaAutenticacao.login(cliente, '1223');
 
-const contaPoup = new ContaPoupanca(0, cliente1, '1001');
-const ContaSal = new ContaSalario(cliente1)
-//posso acessar um atributo da classe diretamente
-console.log(contaPoup);
-console.error(contaCorrenteIgor)
-console.log(ContaSal)
+
+console.log(gerenteEstaLogado, diretorEstaLogado, clienteEstaLogado);
