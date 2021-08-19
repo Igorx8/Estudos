@@ -3,8 +3,8 @@ export class Cliente{
         return this._cpf;
     }
 
-    autenticar(senha){
-        return senha == this._senha;
+    autenticar(){
+        return true;
     }
 
     constructor(nome, cpf, senha){
