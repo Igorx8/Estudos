@@ -4,15 +4,15 @@
         <form @submit.prevent="enviarFormulario">
             <div class="form-group">
         <label for="nome">Nome: </label>
-        <input type="text" class="form-control" v-model="usuario.nome">
+        <input type="text" class="form-control" v-model="usuario.nome" id="nome">
     </div>
     <div class="form-group">
         <label for="email">E-mail: </label>
-        <input type="email" class="form-control" v-model="usuario.email">
+        <input type="email" class="form-control" v-model="usuario.email" id="email">
     </div>
     <div class="form-group">
         <label for="senha">Senha: </label>
-        <input type="password" class="form-control" v-model="usuario.senha">
+        <input type="password" class="form-control" v-model="usuario.senha" id="senha">
     </div>
     <button class="btn btn-primary" type="submit">Salvar</button>
         </form>
@@ -39,7 +39,7 @@ export default {
     methods: {
         enviarFormulario(){
             axios.post('http://localhost:8000/auth/register', this.usuario)
-            .then(resposta => console.log(resposta))
+            .then(() => this.$router.push({ name: 'login'}))
             .catch(erro => console.log(erro))
         }
     }
