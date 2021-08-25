@@ -10,8 +10,8 @@
                 <label for="senha">Senha</label>
                 <input type="password" class="form-control" id="senha" v-model="usuario.senha">
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Entrar</button>
-            <router-link :to="{name:'cadastro.usuario'}">
+            <button type="submit" class="btn btn-primary">Entrar</button>
+            <router-link style="margin-left: 2%" :to="{name:'cadastro.usuario'}">
                 Não possui um cadastro, cadastre-se aqui!
             </router-link>
         </form>
@@ -19,7 +19,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
     
     data(){
@@ -34,9 +33,13 @@ export default {
 
     methods: {
         efetuarLogin(){
-            axios.post('http://localhost:8000/auth/login', this.usuario)
-            .then(response => console.log(response))
-            .catch((response) => console.log(response))
+            this.$http.post('auth/login', this.usuario)
+            .then(response => {
+                console.log(response)
+                localStorage.setItem('token', response.data.access_token)
+                this.$router.push({ name: 'gerentes'})
+            })
+            .catch((erro) => console.log(erro))
         }
     }
 }
