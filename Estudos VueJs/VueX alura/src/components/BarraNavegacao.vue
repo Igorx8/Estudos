@@ -1,18 +1,10 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-bytebank">
     <a class="navbar-brand" href="#">ByteBank</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler" type="button">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse">
       <BarraNavegacaoQuandoLogado v-if="usuarioEstalogado" />
       <BarraNavegacaoQuandoDeslogado v-else />
     </div>
@@ -20,18 +12,18 @@
 </template>
 
 <script>
-import BarraNavegacaoQuandoLogado from '@/components/BarraNavegacaoQuandoLogado'
-import BarraNavegacaoQuandoDeslogado from '@/components/BarraNavegacaoQuandoDeslogado'
+import BarraNavegacaoQuandoLogado from "@/components/BarraNavegacaoQuandoLogado.vue";
+import BarraNavegacaoQuandoDeslogado from "@/components/BarraNavegacaoQuandoDeslogado.vue";
 
 export default {
   components: {
     BarraNavegacaoQuandoLogado,
-    BarraNavegacaoQuandoDeslogado
+    BarraNavegacaoQuandoDeslogado,
   },
 
   computed: {
     usuarioEstalogado() {
-      return Boolean(localStorage.getItem("token"));
+      return this.$store.state.token;
     },
   },
 };

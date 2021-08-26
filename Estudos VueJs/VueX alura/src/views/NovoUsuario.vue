@@ -52,7 +52,7 @@ export default {
   methods: {
     enviarFormulario() {
       this.$http
-      .post("http://localhost:8000/auth/register", this.usuario)
+      .post("auth/register", this.usuario)
         .then(() => this.$router.push({ name: "login" }))
         .catch((erro) => console.log(erro));
     },
