@@ -9,7 +9,7 @@ const estado = {
     usuario: {}
 }
 
-//commit é para chamar mutations
+//commit é para chamar mutations, mutations servem para alterar o state
 const mutations = {
     DEFINIR_USUARIO_LOGADO (state, {token, usuario}) {
         state.token = token

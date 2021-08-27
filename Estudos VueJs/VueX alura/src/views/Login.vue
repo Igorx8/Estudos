@@ -42,7 +42,7 @@ export default {
   methods: {
     efetuarLogin() {
       this.$store.dispatch('efetuarLogin', this.usuario)
-        .then(() => this.router.push({ name: "gerentes"}))
+        .then(() => this.$router.push({ name: "gerentes"}))
       /*
       this.$http
         .post("auth/login", this.usuario)
