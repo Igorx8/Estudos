@@ -32,10 +32,7 @@
 export default {
   data() {
     return {
-      usuario: {
-        email: "",
-        senha: "",
-      },
+      usuario: {},
     };
   },
 
