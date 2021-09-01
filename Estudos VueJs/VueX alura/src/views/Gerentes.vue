@@ -33,7 +33,7 @@ export default {
 
   /*
   //beforeRouteEnter(para onde vamos, de onde estamos vindo, qual o próximo passo), para usar esse tipo de abordagem, teriamos
-  que declarar em todos os componentes do sistema, podemos fazer funcionar globalmente como está feito no documento provedor.js
+  que declarar em todos os componentes do sistema, podemos fazer funcionar globalmente como está feito no documento store.js
   e index.js do router
 
   beforeRouteEnter(to, from, next){

@@ -5,7 +5,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse">
-      <BarraNavegacaoQuandoLogado v-if="usuarioEstalogado" />
+      <BarraNavegacaoQuandoLogado v-if="usuarioEstaLogado" />
       <BarraNavegacaoQuandoDeslogado v-else />
     </div>
   </nav>
@@ -15,6 +15,8 @@
 import BarraNavegacaoQuandoLogado from "@/components/BarraNavegacaoQuandoLogado.vue";
 import BarraNavegacaoQuandoDeslogado from "@/components/BarraNavegacaoQuandoDeslogado.vue";
 
+import { mapGetters } from 'vuex'
+
 export default {
   components: {
     BarraNavegacaoQuandoLogado,
@@ -22,9 +24,7 @@ export default {
   },
 
   computed: {
-    usuarioEstalogado() {
-      return this.$store.state.token;
-    },
+    ...mapGetters(['usuarioEstaLogado'])
   },
 };
 </script>

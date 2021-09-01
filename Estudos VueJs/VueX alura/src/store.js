@@ -42,8 +42,13 @@ const actions = {
     }
 }
 
+const getters = {
+    usuarioEstaLogado: state => Boolean(state.token)
+}
+
 export default new Vuex.Store({
     state: estado,
     mutations,
-    actions
+    actions,
+    getters
 })

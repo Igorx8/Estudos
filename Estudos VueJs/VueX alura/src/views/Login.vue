@@ -20,6 +20,7 @@
           v-model="usuario.senha"
         />
       </div>
+      <p class="alert alert-danger" v-if="mensagemErro"> {{ mensagemErro }} </p>
       <button type="submit" class="btn btn-primary">Entrar</button>
       <router-link style="margin-left: 2%" :to="{ name: 'cadastro.usuario' }">
         Não possui um cadastro, cadastre-se aqui!
@@ -33,13 +34,22 @@ export default {
   data() {
     return {
       usuario: {},
+      mensagemErro: ''
     };
   },
 
   methods: {
     efetuarLogin() {
       this.$store.dispatch('efetuarLogin', this.usuario)
-        .then(() => this.$router.push({ name: "gerentes"}))
+        .then(() => {
+          this.$router.push({ name: "gerentes"})
+          this.mensagemErro = ''
+        })
+        .catch((erro) => {
+          if(erro.request.status === 401){
+            this.mensagemErro = 'Login ou senha inválidos'
+          }
+        })
       /*
       this.$http
         .post("auth/login", this.usuario)
