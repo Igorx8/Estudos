@@ -1,0 +1,24 @@
+{
+  "name": "escola",
+  "version": "1.0.0",
+  "description": "backend escola",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap-vue": "^2.21.2",
+    "vue-router": "^3.5.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Igorx8/Estudos.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Igorx8/Estudos/issues"
+  },
+  "homepage": "https://github.com/Igorx8/Estudos#readme"
+}
