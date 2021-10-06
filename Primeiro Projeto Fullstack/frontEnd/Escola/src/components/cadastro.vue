@@ -28,7 +28,7 @@ export default {
   methods: {
     salvar() {
       this.$http
-      .get("gerentes")
+      .post("/escola")
       .then((response) => (this.form = response))
       .catch((erro) => console.log(erro));
     }
