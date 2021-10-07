@@ -1,13 +1,11 @@
 const moment = require('moment')
-
 const conexao = require('../infraestrutura/conexao')
 
 class Escola{
     adiciona(registro, res){
-        const data = moment(registro.data, 'DD/MM/YYYY').format('YYYY-MM-DD HH:MM:SS')
-
-        const hoje = new moment()
-        const dataEhValida =  moment(data).isSameOrAfter(hoje)
+        const data = moment(registro.data).format('YYYY-MM-DD')
+        const hoje = new moment().format('YYYY-MM-DD')
+        const dataEhValida = moment(data).isSameOrAfter(hoje)
 
         const validacoes = [
             {
@@ -24,9 +22,9 @@ class Escola{
             res.status(400).json(erros)
         }
         else{
-            const sql = 'INSERT INTO Escola SET ?'
+            const sql = 'INSERT INTO escola SET ?'
 
-            conexao.query(sql, (erro, resultados) =>{
+            conexao.query(sql, registro, (erro, resultados) =>{
                 if(erro){
                     res.status(400).json(erro)
                 }
@@ -38,7 +36,7 @@ class Escola{
     }
 
     lista(res){
-        const sql = 'SELECT * FROM Escola'
+        const sql = 'SELECT * FROM escola'
 
         conexao.query(sql, (erro, resultados) => {
             if(erro){
@@ -51,7 +49,7 @@ class Escola{
     }
 
     buscaPorId(id, res){
-        const sql = `SELECT * FROM Escola WHERE id = ${id}`
+        const sql = `SELECT * FROM escola WHERE id = ${id}`
 
         conexao.query(sql, (erro, resultados) => {
             if(erro){
@@ -64,7 +62,7 @@ class Escola{
     }
     
     deleta(id, res){
-        const sql = 'DELETE FROM Escola WHERE id=?'
+        const sql = 'DELETE FROM escola WHERE id=?'
 
         conexao.query(sql, id, (erro, resultados) => {
             if(erro){

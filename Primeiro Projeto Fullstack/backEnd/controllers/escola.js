@@ -7,6 +7,7 @@ module.exports = (app) =>{
 
     app.post('/escola', (req, res) =>{
         const novo = req.body
+
         Escola.adiciona(novo, res)
     })
 }
