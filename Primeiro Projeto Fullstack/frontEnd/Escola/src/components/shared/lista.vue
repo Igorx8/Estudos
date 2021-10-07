@@ -1,8 +1,8 @@
 <template>
-<div class="col-sm-10" style="border: 1px solid black; margin: auto">
+<div class="col-sm-10" style="border: 1px solid black; margin: auto" :key="chaveDaPagina">
 <p> {{ "A rota atual é " + rotaAtual}} </p>
 <table class="table table-striped table-bordered"> 
-    <th v-for="chave in rotaNomes" :key="chave"> {{ chave }}
+    <th v-for="chave in rotaCampos" :key="chave"> {{ chave }}
     <tr v-for="dados in endpoints.dadosReq" :key="dados.id">
         <td> {{ dados[chave] }} </td>
     </tr>
@@ -20,7 +20,8 @@ export default {
     data(){
         const endpoints = new Endpoints()
         return{
-            endpoints
+            endpoints,
+            chaveDaPagina: 0
         }
     },
 
@@ -33,15 +34,24 @@ export default {
             return this.$route.name
         },
 
-        rotaNomes(){
-            let nomes = Object.keys(this.endpoints.dadosReq[0])
-            return nomes
+        rotaCampos(){
+            if(this.endpoints.dadosReq != []){
+                let nomes = Object.keys(this.endpoints.dadosReq[0])
+                return nomes
+            }
+           
         }
     },
 
     methods:{
         carregaLista(){
             this.endpoints.carrega(this.rotaAtual)
+        }
+    },
+
+    watch: {
+        'rotaCampos'(){
+            return this.chaveDaPagina++
         }
     }
 }
