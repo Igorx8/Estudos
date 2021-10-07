@@ -1,30 +1,86 @@
 <template>
-  <div class="row" style="border: 1px solid black">
-    <div class="col-sm-12"><label> Cadastro de alunos:</label></div>
-    <div class="col-sm-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 card-content">
+        <div
+          class="col-sm-3"
+          style="border: 1px solid black; border-radius: 30px"
+        >
+          <label class="col-sm-6"> Cadastro de alunos:</label>
 
-      <label for="nomeCad"> Nome:</label>
-      <input type="text" id="nomeCad" v-model="form.nome" />
+          <div class="col-sm-12 espacamento">
+            <label for="nomeCad">
+              Nome:
+              <input
+                class="col-sm-8"
+                type="text"
+                id="nomeCad"
+                v-model="form.nome"
+              />
+            </label>
+          </div>
 
-      <label for="emailCad"> Email:</label>
-      <input type="text" id="emailCad" v-model="form.email" />
+          <div class="col-sm-12 espacamento">
+            <label for="emailCad">
+              Email:
+              <input
+                class="col-sm-8"
+                type="text"
+                id="emailCad"
+                v-model="form.email"
+              />
+            </label>
+          </div>
 
-      <label for="telefoneCad"> Telefone:</label>
-      <input type="text" id="telefoneCad" v-model="form.telefone" />
+          <div class="col-sm-12 espacamento">
+            <label for="telefoneCad">
+              Telefone:
+              <input
+                class="col-sm-8"
+                type="text"
+                id="telefoneCad"
+                v-model="form.telefone"
+              />
+            </label>
+          </div>
 
-      <label for="dataCad"> Data:</label>
-      <input type="date" id="dataCad" v-model="form.data" />
+          <div class="col-sm-12 espacamento">
+            <label for="dataCad">
+              Data:
+              <input
+                class="col-sm-8"
+                type="date"
+                id="dataCad"
+                v-model="form.data"
+              />
+            </label>
+          </div>
 
-      <label for="statusCad"> Status:</label>
-      <input type="text" id="statusCad" v-model="form.status" />
-
-      <button @click="salvar()">Salvar</button>
+          <div class="col-sm-12 espacamento">
+            <label for="statusCad">
+              Status:
+              <input
+                class="col-sm-8"
+                type="text"
+                id="statusCad"
+                v-model="form.status"
+              />
+            </label>
+          </div>
+          <button
+            class="btn btn-primary col-sm-8"
+            style="margin-top: 20px"
+            @click="salvar()"
+          >
+            Salvar
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -48,3 +104,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.espacamento {
+  margin-top: 5%;
+}
+</style>
