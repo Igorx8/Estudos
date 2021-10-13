@@ -1,12 +1,13 @@
 {
-  "name": "lib1",
+  "name": "lib-markdown",
   "version": "1.0.0",
-  "description": "Primeira biblioteca em NodeJs",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cli": "node cli.js ./arquivos/texto1.md"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
