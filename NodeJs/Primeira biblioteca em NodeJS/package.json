@@ -1,18 +1,21 @@
 {
   "name": "@igorx8/checklinks",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Primeira biblioteca em NodeJs, feita a partir do curso da alura",
-  "keywords": ["estudos","teste"],
+  "keywords": [
+    "estudos",
+    "teste"
+  ],
   "main": "./cli.js",
-  "bin":{
-    "<checklinks>":"./cli.js"
+  "bin": {
+    "checklinks": "./cli.js"
   },
   "preferGlobal": true,
   "homepage": "https://github.com/igorx8",
   "bugs": {
     "email": "igor.carvalho@tsaaviacao.com.br"
   },
-    "scripts": {
+  "scripts": {
     "test": "jest ./test",
     "cli": "node ./src/cli.js"
   },
