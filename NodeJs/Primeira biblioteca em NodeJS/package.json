@@ -1,13 +1,22 @@
 {
-  "name": "lib1",
+  "name": "@igorx8/checklinks",
   "version": "1.0.0",
-  "description": "Primeira biblioteca em NodeJs",
-  "main": "index.js",
-  "scripts": {
-    "test": "jest ./test",
-    "cli": "node cli.js ./arquivos/texto1.md"
+  "description": "Primeira biblioteca em NodeJs, feita a partir do curso da alura",
+  "keywords": ["estudos","teste"],
+  "main": "./cli.js",
+  "bin":{
+    "<checklinks>":"./cli.js"
   },
-  "author": "",
+  "preferGlobal": true,
+  "homepage": "https://github.com/igorx8",
+  "bugs": {
+    "email": "igor.carvalho@tsaaviacao.com.br"
+  },
+    "scripts": {
+    "test": "jest ./test",
+    "cli": "node ./src/cli.js"
+  },
+  "author": "igorx8",
   "license": "ISC",
   "dependencies": {
     "chalk": "^4.1.2",
@@ -15,5 +24,8 @@
   },
   "devDependencies": {
     "jest": "^27.2.5"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

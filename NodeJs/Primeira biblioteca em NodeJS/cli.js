@@ -1,3 +1,6 @@
+#!/usr/bin/env node
+
+// O código acima é um 'shebang'
 const chalk = require('chalk');
 const pegaArquivo = require('./index');
 const validaUrls = require('./http-validacao');
