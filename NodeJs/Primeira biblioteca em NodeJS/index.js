@@ -16,6 +16,10 @@ function trataErro(erro){
 }
 
 //async | await
+/* 
+a função pegaArquivo, busca o arquivo no diretório apontado, depois usa extraiLinks para filtrar e organizar o objeto
+com { chave: valor }
+*/
 async function pegaArquivo(caminhoDoArquivo){
     const encoding = 'utf-8'
     try{
