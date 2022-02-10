@@ -21,5 +21,11 @@ export default class Endpoints{
             }
         }
     }
+
+    edita(nomeDaRota){
+      if(nomeDaRota === 'lista'){
+        
+      }
+    }
 }
 
