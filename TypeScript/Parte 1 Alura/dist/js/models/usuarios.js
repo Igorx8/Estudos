@@ -9,7 +9,7 @@ export class Usuarios {
         return this.usuarios;
     }
     remove(index) {
-        console.log(this.lista());
-        return this.usuarios.splice(index, 1);
+        let idx = this.usuarios.findIndex(user => user.id == index);
+        return this.usuarios.splice(idx, 1);
     }
 }

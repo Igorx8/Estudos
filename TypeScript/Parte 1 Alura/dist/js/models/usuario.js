@@ -5,10 +5,16 @@ export class Usuario {
         this._idade = _idade;
         this._sexo = _sexo;
     }
+    get id() {
+        return this._id;
+    }
     get nome() {
         return this._nome;
     }
-    get id() {
-        return this._id;
+    get idade() {
+        return this._idade;
+    }
+    get sexo() {
+        return this._sexo;
     }
 }

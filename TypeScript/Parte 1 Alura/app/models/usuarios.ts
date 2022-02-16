@@ -11,8 +11,8 @@ export class Usuarios{
       return this.usuarios
     }
 
-      remove(index: number): Usuario[] {
-        console.log(this.lista())
-        return this.usuarios.splice(index, 1)
-      }
+    remove(index: number): Usuario[] {
+      let idx = this.usuarios.findIndex(user => user.id == index)
+      return this.usuarios.splice(idx, 1)
+    }
 }

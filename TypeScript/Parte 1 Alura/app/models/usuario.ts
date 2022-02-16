@@ -7,11 +7,20 @@ export class Usuario{
     private _sexo: string
   ){}
 
+  get id(){
+    return this._id;
+  }
+  
   get nome(){
     return this._nome;
   }
 
-  get id(){
-    return this._id;
+  get idade(){
+    return this._idade;
   }
+
+  get sexo(){
+    return this._sexo;
+  }
+
 }

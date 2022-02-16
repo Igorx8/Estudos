@@ -19,22 +19,33 @@ export class UsuarioController{
     this.users.adiciona(this.criaUsuario())
     this.listaUsers.innerHTML = ''
 
+    this.listaUsers.innerHTML += `
+            <thead> 
+              <th> ID </th>
+              <th> Nome </th>
+              <th> Idade </th>
+              <th> Sexo </th>
+            </thead>
+
+           <tbody>
+           `
+
     for(const elem of this.users.lista()){
        this.listaUsers.innerHTML += `
-       <button 
-        class="btn-danger" 
-        id="${elem.id}"
-        >
-        REMOVER 
-        </button> 
-       <li 
-        style="color: #${Math.floor(Math.random() * 999)}">
-        ${elem.nome} ${elem.id}
-       </li>`
+       <tr colspan="10">
+       <td style="background-color: #${Math.floor(Math.random() * 999999)}"> ${elem.id} </td>
+       <td style="color: #${Math.floor(Math.random() * 999)}; background-color: #${Math.floor(Math.random() * 999999)}">
+        ${elem.nome}
+       </td>
+       <td style="background-color: #${Math.floor(Math.random() * 999999)}"> ${elem.idade} </td>
+       <td style="background-color: #${Math.floor(Math.random() * 999999)}"> ${elem.sexo} </td>
+       <td style="background-color: #${Math.floor(Math.random() * 999999)}"> <button class="btn-danger" id="${elem.id}"> REMOVER </button> </td>
+      
+       </tr>`
     }
 
-    console.log(this.users.lista())
-    
+    this.listaUsers.innerHTML += `
+    </tbody>`
   }
 
   criaUsuario(): Usuario{
@@ -46,22 +57,36 @@ export class UsuarioController{
   }
 
   removeUsuario(evento: any){
+
+    this.users.remove(Number(evento.target.id))
     this.listaUsers.innerHTML = ''
 
-    this.users.remove(evento.target.id)
+    this.listaUsers.innerHTML += `
+            <thead> 
+              <th> ID </th>
+              <th> Nome </th>
+              <th> Idade </th>
+              <th> Sexo </th>
+            </thead>
+
+           <tbody>
+           `
 
     for(const elem of this.users.lista()){
        this.listaUsers.innerHTML += `
-       <button 
-        class="btn-danger" 
-        id="${elem.id}"
-        >
-        REMOVER 
-        </button> 
-       <li 
-        style="color: #${Math.floor(Math.random() * 999)}; pointer-events: none">
-        ${elem.nome} ${elem.id}
-       </li>`
+       <tr colspan="10">
+       <td style="background-color: #${Math.floor(Math.random() * 999999)}"> ${elem.id} </td>
+       <td style="color: #${Math.floor(Math.random() * 999)}; background-color: #${Math.floor(Math.random() * 999999)}">
+        ${elem.nome}
+       </td>
+       <td style="background-color: #${Math.floor(Math.random() * 999999)}"> ${elem.idade} </td>
+       <td style="background-color: #${Math.floor(Math.random() * 999999)}"> ${elem.sexo} </td>
+       <td style="background-color: #${Math.floor(Math.random() * 999999)}"> <button class="btn-danger" id="${elem.id}"> REMOVER </button> </td>
+      
+       </tr>`
     }
+
+    this.listaUsers.innerHTML += `
+    </tbody>`
   }
 }
