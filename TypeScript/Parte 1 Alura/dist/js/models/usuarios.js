@@ -9,6 +9,7 @@ export class Usuarios {
         return this.usuarios;
     }
     remove(index) {
-        return this.usuarios.splice(1, index);
+        console.log(this.lista());
+        return this.usuarios.splice(index, 1);
     }
 }

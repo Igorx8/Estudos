@@ -23,13 +23,13 @@ export class UsuarioController{
        this.listaUsers.innerHTML += `
        <button 
         class="btn-danger" 
-        id="${elem.id}testando"
+        id="${elem.id}"
         >
         REMOVER 
         </button> 
        <li 
         style="color: #${Math.floor(Math.random() * 999)}">
-        ${elem.nome}
+        ${elem.nome} ${elem.id}
        </li>`
     }
 
@@ -45,8 +45,23 @@ export class UsuarioController{
       this.inputSexo.value)
   }
 
-  removeUsuario(index: [number, string]){
-    alert(index)
-    // this.users.remove()
+  removeUsuario(evento: any){
+    this.listaUsers.innerHTML = ''
+
+    this.users.remove(evento.target.id)
+
+    for(const elem of this.users.lista()){
+       this.listaUsers.innerHTML += `
+       <button 
+        class="btn-danger" 
+        id="${elem.id}"
+        >
+        REMOVER 
+        </button> 
+       <li 
+        style="color: #${Math.floor(Math.random() * 999)}; pointer-events: none">
+        ${elem.nome} ${elem.id}
+       </li>`
+    }
   }
 }

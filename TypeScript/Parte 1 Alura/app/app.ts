@@ -18,8 +18,8 @@ addUsuario.addEventListener('click', event => {
 
 const removeUsuario = document.querySelector('#lista');
 removeUsuario.addEventListener('click', event => {
-  console.log(event.target);
-  // controllerUser.remove(event.target.id)
+      controllerUser.removeUsuario(event)
+
 })
 
 

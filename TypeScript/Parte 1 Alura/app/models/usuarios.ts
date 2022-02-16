@@ -12,6 +12,7 @@ export class Usuarios{
     }
 
       remove(index: number): Usuario[] {
-        return this.usuarios.splice(1, index)
+        console.log(this.lista())
+        return this.usuarios.splice(index, 1)
       }
 }
