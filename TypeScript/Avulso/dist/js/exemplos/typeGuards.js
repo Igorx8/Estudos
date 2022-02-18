@@ -20,7 +20,19 @@ function printSkill(person) {
     }
 }
 printSkill(developer);
-class Pato {
-    falar() {
-    }
-}
+// function printSkill(person: Developer | Designer): void {
+//   if('language' in person) {
+//     console.log('developer');
+//   }
+//   else{
+//     console.log('designer')
+//   }
+// }
+// function printSkill(person: Developer | Designer): void {
+//   if((person as Developer).language) {
+//     console.log('developer');
+//   }
+//   else{
+//     console.log('designer')
+//   }
+// }

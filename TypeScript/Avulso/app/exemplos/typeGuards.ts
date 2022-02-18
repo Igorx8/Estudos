@@ -53,22 +53,3 @@ printSkill(developer)
 //     console.log('designer')
 //   }
 // }
-
-
-//________________________________________________________________________________________________________________________________________________________________________________________________________________________
-
-interface Animal {
-  cor: string;
-  peso: number;
-  falar: Function;
-}
-
-class Pato implements Animal{
-  cor: string;
-  peso: number;
-
-  falar(){
-
-  }
-}
-
