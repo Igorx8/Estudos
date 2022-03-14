@@ -9,10 +9,10 @@ export class UsuarioController{
   private users = new Usuarios();
 
   constructor(){
-    this.inputNome = document.querySelector('#nome');
-    this.inputIdade = document.querySelector('#idade');
-    this.inputSexo = document.querySelector('#sexo');
-    this.listaUsers = document.querySelector('#lista');
+    this.inputNome = document.querySelector('#nome') as HTMLInputElement;
+    this.inputIdade = document.querySelector('#idade') as HTMLInputElement;
+    this.inputSexo = document.querySelector('#sexo') as HTMLInputElement;
+    this.listaUsers = document.querySelector('#lista') as HTMLInputElement;
   }
 
   adiciona(){

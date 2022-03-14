@@ -33,7 +33,6 @@ export class NegociacaoController {
         this.inputQuantidade.value = '';
         this.inputValor.value = '';
         this.inputData.focus();
-        // this.inputData.style.backgroundColor = 'blue';
     }
     atualizaView() {
         this.negociacoesView.update(this.negociacoes);
