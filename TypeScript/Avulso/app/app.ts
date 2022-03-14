@@ -4,7 +4,8 @@ import { ProdutoController } from "./controllers/produto-controlller.js";
 const produtoController = new ProdutoController();
 
 const form = document.querySelector('.form');
-form.addEventListener('submit', evento => {
+if(form){
+  form.addEventListener('submit', evento => {
   evento.preventDefault();
   if(document.querySelector('#mensagemView')){
     
@@ -16,7 +17,8 @@ form.addEventListener('submit', evento => {
     node.innerHTML = `<p class="alert alert-success"> Produto adicionado com sucesso!</p>`
 
     var container = document.querySelector('.container')
-    container.insertBefore(node, form);
+    if(container) container.insertBefore(node, form);
   }
   produtoController.adiciona();
 })
+}

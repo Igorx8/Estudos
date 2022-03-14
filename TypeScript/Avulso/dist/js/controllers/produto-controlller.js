@@ -14,23 +14,19 @@ export class ProdutoController {
         this.produtosView.update(this.produtos);
     }
     adiciona() {
-        const produto = this.criaProduto();
+        const produto = Produto.criaDe(this.inputCodigo.value, this.inputNome.value, parseFloat(this.inputPreco.value), parseInt(this.inputQuantidade.value));
         this.produtos.adiciona(produto);
-        this.produtosView.update(this.produtos);
-        this.mensagemView.update(`Produto adicionado com sucesso!`);
         this.limpaForm();
-    }
-    criaProduto() {
-        const codigo = this.inputCodigo.value;
-        const nome = this.inputNome.value;
-        const preco = parseFloat(this.inputPreco.value);
-        const quantidade = parseInt(this.inputQuantidade.value);
-        return new Produto(codigo, nome, preco, quantidade);
+        this.atualizaView();
     }
     limpaForm() {
         this.inputCodigo.value = '';
         this.inputNome.value = '';
         this.inputPreco.value = '';
         this.inputQuantidade.value = '';
+    }
+    atualizaView() {
+        this.produtosView.update(this.produtos);
+        this.mensagemView.update(`Produto adicionado com sucesso!`);
     }
 }

@@ -12,15 +12,13 @@ export class ProdutosView extends View {
         </tr>
       </thead>
       <tbody>
-      ${model.lista().map((produto, indice) => {
+      ${model.lista().map(produto => {
             return `
         <tr>
           <td> ${produto.codigo}</td>
           <td> ${produto.nome} </td>
           <td> ${produto.preco} </td>
-          <td> ${produto.quantidade} 
-          <button class="btn btn-danger" style="float: right" onclick="model.remove(indice)"> Excluir </button>
-          </td>
+          <td> ${produto.quantidade}</td>
         </tr>
           `;
         }).join('')}

@@ -11,7 +11,7 @@ const personReadonly = {
 };
 const stringPerson = {
     name: 'Mateus',
-    age: '25' //agora, caso age seja diferente de string, o sistema chora erro
+    age: '25'
 };
 const numberPerson = {
     name: 15,

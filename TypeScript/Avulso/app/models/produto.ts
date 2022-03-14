@@ -14,4 +14,8 @@ export class Produto{
   get codigo(): string{
     return this._codigo;
   }
+
+  public static criaDe(codigo: string, nome: string, preco: number, quantidade: number): Produto{
+    return new Produto(codigo, nome, preco, quantidade);
+  }
 }

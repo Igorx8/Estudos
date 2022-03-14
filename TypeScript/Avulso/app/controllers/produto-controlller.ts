@@ -14,34 +14,26 @@ export class ProdutoController{
   private mensagemView = new MensagemView('#mensagemView');
 
   constructor(){
-    this.inputCodigo = document.querySelector('#codigo');
-    this.inputNome = document.querySelector('#nome');
-    this.inputPreco = document.querySelector('#preco');
-    this.inputQuantidade = document.querySelector('#quantidade');
+    this.inputCodigo = document.querySelector('#codigo') as HTMLInputElement;
+    this.inputNome = document.querySelector('#nome') as HTMLInputElement;
+    this.inputPreco = document.querySelector('#preco') as HTMLInputElement;
+    this.inputQuantidade = document.querySelector('#quantidade') as HTMLInputElement;
     this.produtosView.update(this.produtos)
 
   }
 
   adiciona():void{
-    const produto = this.criaProduto();
-
-    this.produtos.adiciona(produto)
-
-    this.produtosView.update(this.produtos)
-
-    this.mensagemView.update(`Produto adicionado com sucesso!`)
+    const produto = Produto.criaDe(
+      this.inputCodigo.value,
+      this.inputNome.value,
+      parseFloat(this.inputPreco.value),
+      parseInt(this.inputQuantidade.value)
+    )
+    this.produtos.adiciona(produto);
 
     this.limpaForm();
 
-  }
-
-  criaProduto(): Produto{
-    const codigo = this.inputCodigo.value;
-    const nome = this.inputNome.value;
-    const preco = parseFloat(this.inputPreco.value);
-    const quantidade = parseInt(this.inputQuantidade.value);
-
-    return new Produto(codigo, nome, preco, quantidade);
+    this.atualizaView();
   }
 
   limpaForm():void {
@@ -49,5 +41,10 @@ export class ProdutoController{
     this.inputNome.value = '';
     this.inputPreco.value = '';
     this.inputQuantidade.value = '';
+  }
+
+  atualizaView():void {
+    this.produtosView.update(this.produtos)
+    this.mensagemView.update(`Produto adicionado com sucesso!`)
   }
 }

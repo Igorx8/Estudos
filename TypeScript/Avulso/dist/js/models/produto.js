@@ -11,4 +11,7 @@ export class Produto {
     get codigo() {
         return this._codigo;
     }
+    static criaDe(codigo, nome, preco, quantidade) {
+        return new Produto(codigo, nome, preco, quantidade);
+    }
 }
