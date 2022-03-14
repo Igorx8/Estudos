@@ -8,4 +8,9 @@ export class Produtos {
     lista() {
         return this.produtos;
     }
+    remove(index) {
+        alert('entrou');
+        let idx = this.produtos.findIndex(user => console.log(index));
+        return this.produtos.splice(idx, 1);
+    }
 }

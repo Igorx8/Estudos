@@ -20,8 +20,3 @@ form.addEventListener('submit', evento => {
   }
   produtoController.adiciona();
 })
-
-// const msg = document.querySelector('#mensagemView');
-// msg.addEventListener('click', event => {
-//   event.
-// })
