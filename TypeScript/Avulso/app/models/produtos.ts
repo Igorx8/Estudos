@@ -12,9 +12,9 @@ export class Produtos{
     return this.produtos;
   }
 
-  private remove(index: number): Produto[] {
+  public remove(index: number): Produto[] {
     alert('entrou')
-      let idx = this.produtos.findIndex(user => console.log(index))
+      let idx = this.produtos.findIndex(prod => prod.codigo == index)
       return this.produtos.splice(idx, 1)
   }
 

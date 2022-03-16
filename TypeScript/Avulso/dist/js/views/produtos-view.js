@@ -18,7 +18,7 @@ export class ProdutosView extends View {
           <td> ${produto.codigo}</td>
           <td> ${produto.nome} </td>
           <td> ${produto.preco} </td>
-          <td> ${produto.quantidade}</td>
+          <td> ${produto.quantidade} <button id="${produto.codigo}" onclick="${model.remove(produto.codigo)}" class="btn btn-danger" style="margin-left: 3%"> REMOVER </button></td>
         </tr>
           `;
         }).join('')}

@@ -1,7 +1,7 @@
 export class Produto{
 
   constructor(
-    private _codigo: string,
+    private _codigo: number,
     public readonly nome: string,
     public readonly preco: number,
     public quantidade: number
@@ -11,11 +11,11 @@ export class Produto{
     return this.preco * this.quantidade;
   }
 
-  get codigo(): string{
+  get codigo(): number{
     return this._codigo;
   }
 
-  public static criaDe(codigo: string, nome: string, preco: number, quantidade: number): Produto{
+  public static criaDe(codigo: number, nome: string, preco: number, quantidade: number): Produto{
     return new Produto(codigo, nome, preco, quantidade);
   }
 }
