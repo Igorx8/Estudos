@@ -16,12 +16,12 @@ export function createPerson(
   };
 }
 
-export function squareOf(x: any) {
+export function squareOf(x: unknown) {
   if (typeof x === 'number') return x * x;
   return null;
 }
 
-const squareOfTwoNumber = squareOf(2);
+// const squareOfTwoNumber = squareOf(2);
 const squareOfString = squareOf('2');
 
 if (squareOfString === null) {

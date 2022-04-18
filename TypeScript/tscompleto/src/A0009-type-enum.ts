@@ -18,7 +18,7 @@ enum Tamanho {
   GIGANTE = 15,
 }
 
-// console.log(Tamanho);
+console.log(Tamanho);
 
 function escolhaACor(cor: Cores): void {
   console.log(Cores[cor]);
