@@ -5,7 +5,7 @@ type validaUser = (usuario: user, formulario: user) => boolean;
 const validaUsuario: validaUser = (user, formulario) => {
   const erros = [];
 
-  for (let i = 0; i < Object.keys(formulario).length; i++) {
+  for (let i = 0; i <= Object.keys(formulario).length; i++) {
     if (Object.values(formulario)[i] === '') erros.push(i);
     const limpaErro = document.getElementsByClassName('error-message')[
       i
