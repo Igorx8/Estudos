@@ -1,65 +1,68 @@
-type user = { nome: string; email: string; senha: string };
-type validaUser = (usuario: user, formulario: user) => boolean;
+import isEmail from 'validator/lib/isEmail';
 
-//Validação
-const validaUsuario: validaUser = (user, formulario) => {
-  const erros = [];
-
-  for (let i = 0; i <= Object.keys(formulario).length; i++) {
-    if (Object.values(formulario)[i] === '') erros.push(i);
-    const limpaErro = document.getElementsByClassName('error-message')[
-      i
-    ] as HTMLSpanElement;
-    limpaErro.style.display = 'none';
-  }
-
-  if (erros.length > 0) {
-    for (const erro of erros) {
-      const showErro = document.getElementsByClassName('error-message')[
-        erro
-      ] as HTMLSpanElement;
-      showErro.style.display = 'block';
-    }
-    return false;
-  } else {
-    return (
-      user.email === formulario.email &&
-      user.nome === formulario.nome &&
-      user.senha === formulario.senha
-    );
-  }
-};
-
-const banco = { nome: 'Igor', email: 'igor@tsaaviacao.com', senha: '123' };
+const SHOW_ERROR_MESSAGES = 'show-error-message';
 
 const form = document.querySelector('.form') as HTMLFormElement;
-form.addEventListener('submit', (event) => {
-  const nome = document.querySelector('#username') as HTMLInputElement;
-  const email = document.querySelector('#email') as HTMLInputElement;
-  const senha = document.querySelector('#password') as HTMLInputElement;
-  const senha2 = document.querySelector('#password2') as HTMLInputElement;
 
-  if (senha.value !== senha2.value) {
-    event.preventDefault();
-    const erroSenha = document.getElementsByClassName(
-      'error-message',
-    )[2] as HTMLSpanElement;
-    const erroSenha2 = document.getElementsByClassName(
-      'error-message',
-    )[3] as HTMLSpanElement;
-    erroSenha.style.display = 'block';
-    erroSenha2.style.display = 'block';
-  } else {
-    const formulario = {
-      nome: nome.value,
-      email: email.value,
-      senha: senha.value,
-    };
+const username = document.querySelector('.username') as HTMLInputElement;
 
-    if (validaUsuario(banco, formulario)) alert('entrou');
-    else {
-      event.preventDefault();
-      alert('Algum dos campos digitados é inválido');
-    }
-  }
+const email = document.querySelector('.email') as HTMLInputElement;
+
+const password = document.querySelector('.password') as HTMLInputElement;
+
+const password2 = document.querySelector('.password2') as HTMLInputElement;
+
+form.addEventListener('submit', function (e: Event) {
+  e.preventDefault();
+  hideErrorMessages(this);
+  checkForEmptyFields(username, email, password, password2);
+  checkEmail(email);
+  checkEqualPasswords(password, password2);
+  if (shouldSendForm(this)) console.log('enviou');
 });
+
+function checkEqualPasswords(
+  password: HTMLInputElement,
+  password2: HTMLInputElement,
+) {
+  if (password.value !== password2.value) {
+    showErrorMessage(password, 'As senhas não coincidem');
+    showErrorMessage(password2, 'As senhas não coincidem');
+  }
+}
+
+function checkForEmptyFields(...inputs: HTMLInputElement[]): void {
+  inputs.forEach((input) => {
+    if (!input.value) showErrorMessage(input, 'Campo não pode ficar vazio');
+  });
+}
+
+function checkEmail(input: HTMLInputElement): void {
+  if (!isEmail(input.value)) showErrorMessage(input, 'Email inválido');
+}
+
+function hideErrorMessages(form: HTMLFormElement): void {
+  form
+    .querySelectorAll('.' + SHOW_ERROR_MESSAGES)
+    .forEach((item) => item.classList.remove(SHOW_ERROR_MESSAGES));
+}
+
+function showErrorMessage(input: HTMLInputElement, msg: string): void {
+  const formFields = input.parentElement as HTMLDivElement;
+  const errorMessage = formFields.querySelector(
+    '.error-message',
+  ) as HTMLSpanElement;
+  errorMessage.innerText = msg;
+  formFields.classList.add(SHOW_ERROR_MESSAGES);
+}
+
+function shouldSendForm(form: HTMLFormElement): boolean {
+  let send = true;
+  form
+    .querySelectorAll('.' + SHOW_ERROR_MESSAGES)
+    .forEach(() => (send = false));
+
+  return send;
+}
+
+export { form };
