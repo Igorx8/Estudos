@@ -1,3 +1,5 @@
+//resumidamente, abstract class é uma classe que serve apenas para ser extendida, e seus abstract atributos ou methods servem para ser implementados
+
 export abstract class Personagem {
   protected abstract emoji: string;
 
