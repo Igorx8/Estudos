@@ -45290,3 +45290,5 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-content: none;
   content: var(--tw-content);
 }
+
+@tailwind variants;
