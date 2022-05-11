@@ -10,6 +10,7 @@
       <ul>
         <li>
           <router-link v-for="route in rotas" :to="route.path" :key="route.component">
+            <br />
             {{ route.name }}
           </router-link>
         </li>
