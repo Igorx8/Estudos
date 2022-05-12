@@ -19,17 +19,21 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useStore } from '@/store'
-import { ATUALIZA_PROJETO, ADICIONA_PROJETO, NOTIFICAR } from '@/store/tipo-mutacoes';
+import { ATUALIZA_PROJETO, ADICIONA_PROJETO } from '@/store/tipo-mutacoes';
 import { TipoNotificacao } from '@/interfaces/INotificacao';
+// import { notificacaoMixin } from '@/mixins/notificar'
+import useNotificador from '@/hooks/notificador'
 
 export default defineComponent({
-  name: 'Formulario',
+  name: 'FormularioView',
 
   props: {
     id: {
       type: String
     }
   },
+
+  // mixins: [notificacaoMixin],
 
   mounted() {
     if (this.id) {
@@ -52,12 +56,10 @@ export default defineComponent({
       }
       else {
         this.store.commit(ADICIONA_PROJETO, this.nomeDoProjeto);
+        
         this.nomeDoProjeto = '';
-        this.store.commit(NOTIFICAR, {
-          titulo: 'Novo projeto salvo',
-          texto: 'O projeto foi salvo com sucesso',
-          tipo: TipoNotificacao.SUCESSO
-        });
+        
+        this.notificar('Novo projeto salvo', 'O projeto foi salvo com sucesso', TipoNotificacao.SUCESSO)
         this.$router.push('/projetos');
       }
     },
@@ -65,14 +67,17 @@ export default defineComponent({
     adicionaTxt() {
       this.store.commit('ADICIONA_STRING_GLOBAL', this.nomeDoProjeto);
       this.nomeDoProjeto = '';
-    }
-  },
+    },
+},
 
   setup() {
     const store = useStore();
 
+    const { notificar } = useNotificador();
+
     return {
       store,
+      notificar
     }
   }
 });
