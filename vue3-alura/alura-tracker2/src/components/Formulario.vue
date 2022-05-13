@@ -27,6 +27,7 @@ import { useStore } from "vuex";
 import Temporizador from './Temporizador.vue'
 
 import { key } from '@/store'
+import { OBTER_PROJETOS } from "@/store/tipo-acoes";
 
 export default defineComponent({
   name: "FormulárioView",
@@ -53,6 +54,8 @@ export default defineComponent({
 
   setup() {
     const store = useStore(key);
+
+    store.dispatch(OBTER_PROJETOS);
 
     return {
       projetos: computed(() => store.state.projetos)

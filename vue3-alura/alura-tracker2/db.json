@@ -4,15 +4,55 @@
       "id": 1,
       "nome": "Alura tracker"
     },
-
     {
       "id": 2,
       "nome": "Alura Update"
     },
-
     {
       "id": 3,
       "nome": "Alura New"
+    },
+    {
+      "nome": "1212",
+      "id": 4
+    }
+  ],
+  "tarefas": [
+    {
+      "id": 1,
+      "duracaoEmSegundos": 120,
+      "descricao": "Configuração do ambiente",
+      "projeto": {
+        "id": 1,
+        "nome": "Alura tracker 3"
+      }
+    },
+    {
+      "duracaoEmSegundos": 15,
+      "descricao": "Refatoração",
+      "projeto": {
+        "id": 1,
+        "nome": "Alura tracker"
+      },
+      "id": 2
+    },
+    {
+      "duracaoEmSegundos": 5,
+      "descricao": "TEste",
+      "projeto": {
+        "id": 1,
+        "nome": "Alura tracker"
+      },
+      "id": 3
+    },
+    {
+      "duracaoEmSegundos": 2,
+      "descricao": "TarefaNOVA",
+      "projeto": {
+        "id": 2,
+        "nome": "Alura Update"
+      },
+      "id": 4
     }
   ]
 }

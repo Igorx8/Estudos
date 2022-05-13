@@ -19,10 +19,10 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useStore } from '@/store'
-import { ATUALIZA_PROJETO, ADICIONA_PROJETO } from '@/store/tipo-mutacoes';
 import { TipoNotificacao } from '@/interfaces/INotificacao';
 // import { notificacaoMixin } from '@/mixins/notificar'
 import useNotificador from '@/hooks/notificador'
+import { ALTERAR_PROJETO, CADASTRAR_PROJETOS } from '@/store/tipo-acoes';
 
 export default defineComponent({
   name: 'FormularioView',
@@ -51,24 +51,29 @@ export default defineComponent({
   methods: {
     salvar() {
       if (this.id) {
-        this.store.commit(ATUALIZA_PROJETO, { id: this.id, nome: this.nomeDoProjeto });
-        this.$router.push('/projetos');
+        this.store.dispatch(ALTERAR_PROJETO, { id: this.id, nome: this.nomeDoProjeto });
+        this.notificaSucesso();
       }
       else {
-        this.store.commit(ADICIONA_PROJETO, this.nomeDoProjeto);
-        
-        this.nomeDoProjeto = '';
-        
-        this.notificar('Novo projeto salvo', 'O projeto foi salvo com sucesso', TipoNotificacao.SUCESSO)
-        this.$router.push('/projetos');
+        this.store.dispatch(CADASTRAR_PROJETOS, this.nomeDoProjeto)
+          .then(() => {
+            this.notificaSucesso()
+          })
+
       }
+    },
+
+    notificaSucesso() {
+      this.nomeDoProjeto = '';
+      this.notificar('Novo projeto salvo', 'O projeto foi salvo com sucesso', TipoNotificacao.SUCESSO);
+      this.$router.push('/projetos');
     },
 
     adicionaTxt() {
       this.store.commit('ADICIONA_STRING_GLOBAL', this.nomeDoProjeto);
       this.nomeDoProjeto = '';
     },
-},
+  },
 
   setup() {
     const store = useStore();
