@@ -8,7 +8,7 @@
       <p class="control has-icons-left has-icons-right">
         <input type="text" class="input" placeholder="Digite para filtrar" v-model="filtro">
         <span class="icon is-small is-left">
-          <i class="fa fa-envelope"></i>
+          <i class="fa fa-search"></i>
         </span>
         <span class="icon is-small is-right">
           <i class="fa fa-check"></i>
@@ -16,27 +16,24 @@
       </p>
     </div>
     <Tarefa v-for="(tarefa, index) in tarefas" :key="index" :tarefa="tarefa" @ao-tarefa-clicada="selecionarTarefa" />
-    <div class="modal" :class="{ 'is-active': tarefaSelecionada }" v-if="tarefaSelecionada">
-      <div class="modal-background"></div>
-      <div class="modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title">Modal title</p>
-          <button class="delete" @click="fecharModal" aria-label="close"></button>
-        </header>
-        <section class="modal-card-body">
-          <div class="field">
-            <label for="descricaoDaTarefa" class="label">
-              Descrição
-            </label>
-            <input type="text" class="input" v-model="tarefaSelecionada.descricao" id="nomeDoProjeto">
-          </div>
-        </section>
-        <footer class="modal-card-foot">
-          <button @click="alterarTarefa" class="button is-success">Save changes</button>
-          <button @click="fecharModal" class="button">Cancel</button>
-        </footer>
-      </div>
-    </div>
+    <Modal :mostrar="tarefaSelecionada != null" v-if="tarefaSelecionada !== null">
+      <template v-slot:cabecalho>
+        <p class="modal-card-title">Modal title</p>
+        <button class="delete" @click="fecharModal" aria-label="close"></button>
+      </template>
+      <template v-slot:corpo>
+        <div class="field">
+          <label for="descricaoDaTarefa" class="label">
+            Descrição
+          </label>
+          <input type="text" class="input" v-model="tarefaSelecionada.descricao" id="nomeDoProjeto">
+        </div>
+      </template>
+      <template v-slot:rodape>
+        <button @click="alterarTarefa" class="button is-success">Save changes</button>
+        <button @click="fecharModal" class="button">Cancel</button>
+      </template>
+    </Modal>
   </div>
 </template>
 
@@ -48,13 +45,15 @@ import Box from '../components/Box.vue'
 import { ALTERAR_TAREFA, CADASTRAR_TAREFA, OBTER_PROJETOS, OBTER_TAREFAS } from '@/store/tipo-acoes';
 import { useStore } from '@/store';
 import ITarefa from '@/interfaces/ITarefa';
+import Modal from '@/components/Modal.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
     Formulario,
     Tarefa,
-    Box
+    Box,
+    Modal
   },
   data() {
     return {
@@ -92,7 +91,7 @@ export default defineComponent({
 
     watchEffect(() => {
       store.dispatch(OBTER_TAREFAS, filtro.value);
-        })
+    })
 
     return {
       tarefas: computed(() => store.state.tarefa.tarefas),
