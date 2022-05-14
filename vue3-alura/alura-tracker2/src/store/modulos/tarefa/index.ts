@@ -1,0 +1,48 @@
+import http from "@/http";
+import ITarefa from "@/interfaces/ITarefa";
+import { Estado } from "@/store";
+import { OBTER_TAREFAS, CADASTRAR_TAREFA, ALTERAR_TAREFA } from "@/store/tipo-acoes";
+import { ALTERA_TAREFA, DEFINIR_TAREFAS, ADICIONAR_TAREFA } from "@/store/tipo-mutacoes";
+import { Module } from "vuex";
+
+export interface EstadoTarefa {
+    tarefas: ITarefa[];
+}
+
+export const tarefa: Module<EstadoTarefa, Estado> = {
+    mutations: {
+        [ALTERA_TAREFA](state, tarefa: ITarefa) {
+            const index = state.tarefas.findIndex((t) => t.id === tarefa.id);
+            state.tarefas[index] = tarefa;
+          },
+      
+          [DEFINIR_TAREFAS](state, tarefas: ITarefa[]) {
+            state.tarefas = tarefas;
+          },
+      
+          [ADICIONAR_TAREFA](state, tarefa: ITarefa) {
+            state.tarefas.push(tarefa);
+          },
+    },
+
+    actions: {
+        [OBTER_TAREFAS]({ commit }) {
+            http
+              .get(`tarefas`)
+              .then((response) => commit(DEFINIR_TAREFAS, response.data));
+          },
+      
+          [CADASTRAR_TAREFA]({ commit }, tarefa: ITarefa) {
+            return http
+              .post("tarefas", tarefa)
+              .then((resposta) => commit(ADICIONAR_TAREFA, resposta.data));
+          },
+      
+          [ALTERAR_TAREFA]({ commit }, tarefa: ITarefa) {
+            return http
+              .put(`tarefas/${tarefa.id}`, tarefa)
+              .then(() => commit(ALTERA_TAREFA, tarefa));
+          },
+      
+    }
+}

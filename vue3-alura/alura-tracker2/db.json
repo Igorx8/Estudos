@@ -10,18 +10,14 @@
     },
     {
       "id": 3,
-      "nome": "Alura New"
-    },
-    {
-      "nome": "1212",
-      "id": 4
+      "nome": "Alura cracker"
     }
   ],
   "tarefas": [
     {
       "id": 1,
       "duracaoEmSegundos": 120,
-      "descricao": "Configuração do ambiente",
+      "descricao": "Configuração do ambiente ",
       "projeto": {
         "id": 1,
         "nome": "Alura tracker 3"
@@ -38,7 +34,7 @@
     },
     {
       "duracaoEmSegundos": 5,
-      "descricao": "TEste",
+      "descricao": "Teste",
       "projeto": {
         "id": 1,
         "nome": "Alura tracker"
@@ -47,7 +43,7 @@
     },
     {
       "duracaoEmSegundos": 2,
-      "descricao": "TarefaNOVA",
+      "descricao": "Tarefa nova",
       "projeto": {
         "id": 2,
         "nome": "Alura Update"
