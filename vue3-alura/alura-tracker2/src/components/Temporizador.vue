@@ -17,36 +17,40 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { computed, defineComponent, ref } from "vue";
 import Cronometro from './Cronometro.vue'
 
 export default defineComponent({
   name: "Temporizador",
-  emits: ['aoTemporizadorFinalizado'],
   components: {
     Cronometro
   },
-  data () {
-    return {
-      tempoEmSegundos: 0,
-      cronometro: 0,
-      cronometroRodando: false
-    }
-  },
-  methods: {
-    iniciar () {
-      // começar a contagem
-      // 1 seg = 1000 ms
-      this.cronometroRodando = true
-      this.cronometro = setInterval(() => {
-        this.tempoEmSegundos += 1        
+  setup(props, { emit }) {
+    const tempoEmSegundos = ref(0);
+    const cronometro = ref(0);
+    const cronometroRodando = ref(false);
+    const teste = computed(() => tempoEmSegundos.value + cronometro.value);
+
+    const iniciar = () => {
+      cronometroRodando.value = true
+      cronometro.value = setInterval(() => {
+        tempoEmSegundos.value += 1
       }, 1000)
-    },
-    finalizar () {
-      this.cronometroRodando = false
-      clearInterval(this.cronometro)
-      this.$emit('aoTemporizadorFinalizado', this.tempoEmSegundos)
-      this.tempoEmSegundos = 0
+    }
+
+    const finalizar = () => {
+      cronometroRodando.value = false
+      clearInterval(cronometro.value)
+      emit('aoTemporizadorFinalizado', tempoEmSegundos)
+      tempoEmSegundos.value = 0
+    }
+
+    return {
+      tempoEmSegundos,
+      cronometro,
+      cronometroRodando,
+      iniciar,
+      finalizar
     }
   }
 });
