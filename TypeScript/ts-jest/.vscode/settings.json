@@ -1,0 +1,22 @@
+{
+  "scm.countBadge": "all",
+  "typescript.format.insertSpaceAfterConstructor": false,
+  "javascript.format.insertSpaceAfterConstructor": false,
+  "workbench.activityBar.iconClickBehavior": "toggle",
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.activeIconPack": "angular",
+  "gitstash.explorer.items.file.icons": "file",
+  "volar.icon.preview": true,
+  "volar.icon.splitEditors": true,
+  "material-icon-theme.opacity": 1,
+  "material-icon-theme.hidesExplorerArrows": false,
+  "material-icon-theme.folders.theme": "specific",
+  "code-runner.executorMap": {
+    "typescript": "cls && npx ts-node --files --transpile-only"
+  },
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll": true
+  }
+}
