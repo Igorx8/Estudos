@@ -20,10 +20,19 @@ const shoppingCart = new ShoppingCart(noDiscount);
 const messaging = new Messaging();
 const persistency = new Persistency();
 
-const individualCustomer = new IndividualCustomer('Igor', 'Carvalho', '111.222.333-44'); //testar aplicar em order, com individual e enterprise
-const enterpriseCustomer = new EnterpriseCustomer('Tech teco', '23211233')
+const individualCustomer = new IndividualCustomer(
+  'Igor',
+  'Carvalho',
+  '111.222.333-44',
+);
+const enterpriseCustomer = new EnterpriseCustomer('Tech teco', '23211233');
 
-const order = new Order(shoppingCart, messaging, persistency, individualCustomer);
+const order = new Order(
+  shoppingCart,
+  messaging,
+  persistency,
+  individualCustomer,
+);
 
 shoppingCart.addItem(new Product('Camiseta', 49.99));
 shoppingCart.addItem(new Product('Caneca', 9.99));

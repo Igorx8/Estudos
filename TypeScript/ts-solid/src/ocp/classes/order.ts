@@ -10,7 +10,7 @@ export class Order {
     private readonly _cart: ShoppingCart,
     private readonly messaging: Messaging,
     private readonly persistency: Persistency,
-  ) { }
+  ) {}
 
   get orderStatus(): OrderStatus {
     return this._orderStatus;
