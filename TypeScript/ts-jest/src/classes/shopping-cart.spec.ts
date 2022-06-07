@@ -30,6 +30,8 @@ const createSutWithProducts = () => {
 };
 
 describe('Shopping cart', () => {
+  afterEach(() => jest.clearAllMocks());
+
   it('it should be an empty cart when no product is added', () => {
     const { sut } = createSut();
     expect(sut.isEmpty()).toBe(true);
@@ -70,5 +72,14 @@ describe('Shopping cart', () => {
     const discountMockSpy = jest.spyOn(discountMock, 'calculate');
     sut.totalWithDiscount();
     expect(discountMockSpy).toHaveBeenCalledWith(sut.total());
+  });
+
+  it('should check if total returns a number', () => {
+    const { sut, discountMock } = createSutWithProducts();
+    const discountMockSpy = jest
+      .spyOn(discountMock, 'calculate')
+      .mockReturnValueOnce('retornou uma string');
+    sut.totalWithDiscount();
+    expect(discountMockSpy).not.toBeInstanceOf(Number);
   });
 });

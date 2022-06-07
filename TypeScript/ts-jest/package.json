@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "test:silent": "jest --watchAll --silent --noStackTrace",
-    "test:clear": "jest --clearCache"
+    "test:clear": "jest --clearCache",
+    "test:c" : "jest --coverage --silent --noStackTrace"
   },
   "author": "",
   "license": "ISC",
