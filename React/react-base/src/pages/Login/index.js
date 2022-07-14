@@ -11,6 +11,7 @@ function Login() {
         <small> Testando </small>
       </Title>
       <Paragrafo> Lorem ipsum</Paragrafo>
+      <button type="button">Enviar</button>
     </Container>
   );
 }
