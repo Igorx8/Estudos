@@ -1,0 +1,48 @@
+{
+  "git.confirmSync": false,
+  "prettier.embeddedLanguageFormatting": "off",
+  "bracketPairColorizer.depreciation-notice": false,
+  "editor.formatOnSave": true,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.fontSize": 11,
+  "terminal.integrated.fontSize": 11,
+  "editor.autoIndent": "advanced",
+  "editor.detectIndentation": false,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnPaste": false,
+  "editor.formatOnType": false,
+  "editor.inlineSuggest.enabled": true,
+  "eslint.validate": ["javascript", "javascriptreact"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "prettier.configPath": "./.prettierrc.js",
+  "workbench.iconTheme": "material-icon-theme",
+
+  "material-icon-theme.folders.associations": {},
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": false,
+    "plaintext": false,
+    "markdown": false,
+    "typescript": true
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "Vue.volar"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "explorer.confirmDelete": false,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.colorTheme": "Dracula"
+}
