@@ -1,10 +1,15 @@
 exports.globalMiddleWare = (req, res, next) => {
-  console.log();
+  res.locals.umaVariavelLocal = "Este é o valor da variável local"; //seta uma variável local, disponível em todos os arquivos pois está no middleware global
+  next();
+};
 
-  if (req.body.nome) {
-    console.log("Vi que você enviou o nome: " + req.body.nome);
+exports.checkCsrfError = (err, req, res, next) => {
+  if (err && err.code === "EBADCSRFTOKEN") {
+    return res.render("404");
   }
-  console.log("Passei pelo midware global");
+};
 
+exports.csrfMiddleware = (req, res, next) => {
+  res.locals.csrfToken = req.csrfToken();
   next();
 };
