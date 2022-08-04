@@ -17,7 +17,6 @@ export default class Contato {
     const form = e.target;
 
     const nome = form.querySelector('input[name="nome"]');
-    const sobrenome = form.querySelector('input[name="sobrenome"]');
     const email = form.querySelector('input[name="email"]');
     const telefone = form.querySelector('input[name="telefone"]');
 
