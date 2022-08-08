@@ -21,7 +21,6 @@ class App {
 
   private database(): void {
     mongoose.connect('mongodb://root:example@127.0.0.1:27017/api?authSource=admin', {
-      // CONNECTIONSTRING=mongodb+srv://ec2-user:joao1314@cluster0.0loudcn.mongodb.net/AGENDA?retryWrites=true&w=majority
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }).then(() => console.log('logou')).catch((err) => console.log(err));
