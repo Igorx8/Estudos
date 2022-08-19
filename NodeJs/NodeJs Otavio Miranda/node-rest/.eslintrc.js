@@ -23,5 +23,7 @@ module.exports = {
     "no-param-reassign": "off",
     "spaced-comment": "off",
     camelcase: "off",
+    "object-shorthand": "off",
+    "func-names": "off",
   },
 };
