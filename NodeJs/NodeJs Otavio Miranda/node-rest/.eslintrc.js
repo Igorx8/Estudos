@@ -22,5 +22,6 @@ module.exports = {
     "comma-dangle": "off",
     "no-param-reassign": "off",
     "spaced-comment": "off",
+    camelcase: "off",
   },
 };
