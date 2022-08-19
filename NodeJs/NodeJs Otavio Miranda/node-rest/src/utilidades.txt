@@ -1,0 +1,14 @@
+criar migration 
+
+npx sequelize migration:create --name=mudar-email-aluno-para-unique
+
+rodar migrations
+
+npx sequelize db:migrate
+
+criar seeds
+
+npx sequelize seed:generate --name criar-usuarios   
+
+rodar seeds 
+npx sequelize db:seed:all
